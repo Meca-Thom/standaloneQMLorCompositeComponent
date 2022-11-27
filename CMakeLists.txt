@@ -11,11 +11,13 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick Qml)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Qml)
 
 set(PROJECT_SOURCES
         main.cpp
+        tcp_session.h
+        tcp_session.cpp
         tcp_server.h
         tcp_server.cpp
         qml.qrc

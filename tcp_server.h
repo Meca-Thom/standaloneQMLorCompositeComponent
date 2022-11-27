@@ -2,15 +2,30 @@
 #define TCP_SERVER_H
 
 #include <QObject>
+#include <QTcpServer>
+#include <QTcpSocket>
+#include <QDebug>
 
-class TCP_Server : public QObject
+//class QTcpSocket;
+
+class TCP_Server :public QTcpServer//, public QObject => unnecessary because QTcpServer already inherits it
 {
     Q_OBJECT
 public:
     explicit TCP_Server(QObject *parent = nullptr);
+    void envia(const QString &msj);
+
+
+private:
+    QTcpSocket* mSocket;
 
 signals:
 
+public slots:
+    void initConnection();
+
 };
+
+
 
 #endif // TCP_SERVER_H

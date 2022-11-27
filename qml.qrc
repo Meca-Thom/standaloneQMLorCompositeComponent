@@ -2,6 +2,6 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>LayoutsTest.qml</file>
-        <file>TCP_Server.qml</file>
+        <file>TCP_Component.qml</file>
     </qresource>
 </RCC>

@@ -1,5 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "tcp_server.h"
 
 
 int main(int argc, char *argv[])
@@ -7,6 +8,9 @@ int main(int argc, char *argv[])
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
+    qmlRegisterType<TCP_Server>("tcpServer",1,0,"TcpServer");
+    //qmlRegisterType<TCP_Session>("tcpSession",1,0,"TcpSession");
+
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
