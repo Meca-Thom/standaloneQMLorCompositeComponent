@@ -20,6 +20,8 @@ set(PROJECT_SOURCES
         tcp_session.cpp
         tcp_server.h
         tcp_server.cpp
+        tcp_client.h
+        tcp_client.cpp
         qml.qrc
 )
 

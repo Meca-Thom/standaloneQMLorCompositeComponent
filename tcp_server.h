@@ -13,7 +13,7 @@ class TCP_Server :public QTcpServer//, public QObject => unnecessary because QTc
     Q_OBJECT
 public:
     explicit TCP_Server(QObject *parent = nullptr);
-    void envia(const QString &msj);
+
 
 
 private:
@@ -22,6 +22,7 @@ private:
 signals:
 
 public slots:
+    void envia(const QString &msj);
     void initConnection();
 
 };

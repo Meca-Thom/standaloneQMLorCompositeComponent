@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.3
 import tcpServer 1.0
+import tcpClient 1.0
 //import tcpSession 1.0
 
 GridLayout{
@@ -11,14 +12,27 @@ GridLayout{
         Layout.fillHeight: true
         Layout.fillWidth: true
         color: "green"
-        Rectangle{height:50;width:50;
+        RowLayout{
             anchors.centerIn: parent
-            color: "turquoise"
-            TcpServer{
-                id:leServ
+            Rectangle{height:50;width:50;
+                color: "pink"
+                TcpClient{
+                    id : leClient
+                }
+                MouseArea{anchors.fill:parent
+                    onClicked:{/*leServ.envia("titi") //crash ?*/ leClient.connect2Serv()
+
+                    }
+                }
             }
-            MouseArea{anchors.fill:parent
-                onClicked:{leServ.initConnection()  //newConnection()
+            Rectangle{height:50;width:50;
+                color: "turquoise"
+                TcpServer{
+                    id:leServ
+                }
+                MouseArea{anchors.fill:parent
+                    onClicked:{leServ.initConnection()  //newConnection()
+                    }
                 }
             }
         }
