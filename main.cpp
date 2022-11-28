@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include "tcp_server.h"
 #include "tcp_client.h"
+#include "tcp_session.h"
 
 
 int main(int argc, char *argv[])
@@ -11,7 +12,7 @@ int main(int argc, char *argv[])
 #endif
     qmlRegisterType<TCP_Server>("tcpServer",1,0,"TcpServer");
     //qmlRegisterType<TCP_Session>("tcpSession",1,0,"TcpSession");
-qmlRegisterType<TCP_Client>("tcpClient",1,0,"TcpClient");
+    qmlRegisterType<TCP_Client>("tcpClient",1,0,"TcpClient");
 
     QGuiApplication app(argc, argv);
 

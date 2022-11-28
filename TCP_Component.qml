@@ -15,12 +15,19 @@ GridLayout{
         RowLayout{
             anchors.centerIn: parent
             Rectangle{height:50;width:50;
+                color: "orange"
+                MouseArea{anchors.fill:parent
+                    onClicked:{leClient.writeHolaMundo()
+                    }
+                }
+            }
+            Rectangle{height:50;width:50;
                 color: "pink"
                 TcpClient{
                     id : leClient
                 }
                 MouseArea{anchors.fill:parent
-                    onClicked:{/*leServ.envia("titi") //crash ?*/ leClient.connect2Serv()
+                    onClicked:{leClient.connect2Serv()
 
                     }
                 }
@@ -31,7 +38,7 @@ GridLayout{
                     id:leServ
                 }
                 MouseArea{anchors.fill:parent
-                    onClicked:{leServ.initConnection()  //newConnection()
+                    onClicked:{leServ.initConnection()
                     }
                 }
             }
