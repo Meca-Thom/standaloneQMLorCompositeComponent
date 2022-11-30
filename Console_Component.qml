@@ -6,7 +6,7 @@ import QtQuick.Controls 2.15
 RowLayout{
     height:20
     width:parent.width
-    //anchors.BottomAnchor
+    //anchors.bottom:parent.bottom     //anchors.BottomAnchor
     TextArea{
         id:textZone1
         Layout.fillHeight: true
@@ -24,7 +24,7 @@ RowLayout{
         implicitWidth: 20
         text: "Legend"
         onClicked:{
-            console.log("MY BUTTON CLICKED")
+            //console.log("MY BUTTON CLICKED")
         }
         //background: Rectangle{color: "chartreuse"}
     }
