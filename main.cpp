@@ -2,7 +2,7 @@
 #include <QQmlApplicationEngine>
 #include "tcp_server.h"
 #include "tcp_client.h"
-#include "tcp_session.h"
+#include "file_opener.h"
 
 
 int main(int argc, char *argv[])
@@ -14,6 +14,8 @@ int main(int argc, char *argv[])
     //qmlRegisterType<TCP_Session>("tcpSession",1,0,"TcpSession");
     qmlRegisterType<TCP_Client>("tcpClient",1,0,"TcpClient");
 
+    file_opener f;
+    f.openTheFile("C:\\Users\\Thomas\\Documents\\GIT\\standaloneQMLorCompositeComponents\\TEST.txt");
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;

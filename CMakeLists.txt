@@ -22,6 +22,8 @@ set(PROJECT_SOURCES
         tcp_server.cpp
         tcp_client.h
         tcp_client.cpp
+        file_opener.h
+        file_opener.cpp
         qml.qrc
 )
 

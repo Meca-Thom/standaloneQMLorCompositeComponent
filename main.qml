@@ -8,7 +8,7 @@ Window {
     visible: true
     title: qsTr("Hello World")
 
-    Console_Component{}
+    //Console_Component{}
     //TCP_Component{}
     //LayoutsTest{}
 }
