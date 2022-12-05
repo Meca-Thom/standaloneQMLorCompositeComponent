@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     //qmlRegisterType<TCP_Session>("tcpSession",1,0,"TcpSession");
     qmlRegisterType<TCP_Client>("tcpClient",1,0,"TcpClient");
 
-    qmlRegisterType<file_opener>("cpp_fileOpener",1,0,"FileOpener");
+    qmlRegisterType<file_opener>("fileOpener",1,0,"FileOpener");
     //file_opener f;
     //f.openTheFile("C:\\Users\\Thomas\\Documents\\GIT\\standaloneQMLorCompositeComponents\\TEST.txt");
     QGuiApplication app(argc, argv);

@@ -1,12 +1,22 @@
 import QtQuick 2.15
-import cpp_fileOpener 1.0
-
 import QtQuick.Layouts 1.3
 import tcpServer 1.0
 import tcpClient 1.0
 //import tcpSession 1.0
+import fileOpener 1.0
 
 GridLayout{
+    TcpClient{
+        id : leClient
+    }
+    TcpServer{
+        id:leServ
+    }
+    FileOpener{
+        id:utilFO
+    }
+
+    property string myFileName: "C:\\Users\\Thomas\\Documents\\GIT\\standaloneQMLorCompositeComponents\\TEST.txt"
     anchors.fill:parent
     Layout.fillHeight: true
     Layout.fillWidth: true
@@ -25,21 +35,16 @@ GridLayout{
             }
             Rectangle{height:50;width:50;
                 color: "pink"
-                TcpClient{
-                    id : leClient
-                }
                 MouseArea{anchors.fill:parent
-                    onClicked:{leClient.connect2Serv()
-
+                    onClicked:{leClient.connect2Serv();
+                        console.log(utilFO.openTheFileAndReturnString(myFileName));
                     }
                 }
             }
             Rectangle{height:50;width:50;
                 property string servorState : "red";
                 color: servorState
-                TcpServer{
-                    id:leServ
-                }
+
                 MouseArea{anchors.fill:parent
                     onClicked:{
                         if(parent.servorState=="red"){leServ.initConnection();parent.servorState="chartreuse"}

@@ -10,8 +10,13 @@ void TCP_Server::envia(const QString &msj)
 {
     qDebug()<<"T : ";
     if(mSocket){ //pbm n'est pas le socket
-        //QTextStream T(mSocket);
-//        T<<msj;
+        QTextStream T(mSocket);
+
+        //QByteArray block;
+        //QDataStream out(&block, QIODevice::WriteOnly);
+//https://forum.qt.io/topic/24264/solved-using-qtcpsocket-write-qbytearray-several-times-only-sends-the-first-time
+
+        T<<msj;
 //        //qDebug()<<"T : "<<T.readAll();
 //        mSocket->flush();
     }

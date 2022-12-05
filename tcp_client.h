@@ -19,7 +19,6 @@ public slots:
         if(QTcpSocket::ConnectedState==m_mySocket->state()){
             qDebug()<<"baba";
         }
-
     }
 
     void writeHolaMundo(){

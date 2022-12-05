@@ -23,6 +23,19 @@ public slots:
                 qDebug()<<line;//process_line(line);
             }
     }
+
+    QString openTheFileAndReturnString(QString filepath){
+        QFile file(filepath);
+            if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+                return "";
+
+            while (!file.atEnd()) {
+                QString line = file.readLine();
+                return line;
+                qDebug()<<line;//process_line(line);
+            }
+            return "";
+    }
 signals:
 
 };
