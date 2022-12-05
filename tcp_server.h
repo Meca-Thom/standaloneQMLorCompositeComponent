@@ -24,6 +24,7 @@ signals:
 public slots:
     void envia(const QString &msj);
     void initConnection();
+    void closeConnection();
 
 };
 

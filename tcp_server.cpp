@@ -29,3 +29,9 @@ void TCP_Server::initConnection()
     }
 
 }
+
+void TCP_Server::closeConnection()
+{
+   this->close();
+   qDebug()<<"Servidor Desconectado";
+}

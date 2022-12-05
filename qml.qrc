@@ -4,5 +4,6 @@
         <file>LayoutsTest.qml</file>
         <file>TCP_Component.qml</file>
         <file>Console_Component.qml</file>
+        <file>MicroServer.qml</file>
     </qresource>
 </RCC>

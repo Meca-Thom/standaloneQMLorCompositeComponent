@@ -11,4 +11,5 @@ Window {
     //Console_Component{}
     //TCP_Component{}
     //LayoutsTest{}
+    MicroServer{} //see if cleanable by using "TCP_Component" instance and customizing it "on the go"
 }
