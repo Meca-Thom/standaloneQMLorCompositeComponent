@@ -39,7 +39,7 @@ GridLayout{
                     onClicked:{//leClient.writeHolaMundo()
                         //leClient.waitFor();
                         //leServ.writeHolaMundoServTest();
-                        leServ.envia(utilFO.openTheFileAndReturnString(myFileName));    //openFileIntoByteArray
+                        leServ.envia(utilFO.openFileIntoByteArray(myFileName));    //      openTheFileAndReturnString(myFileName)
                     }
                 }
             }
