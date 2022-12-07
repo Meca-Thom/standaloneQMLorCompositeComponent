@@ -21,6 +21,7 @@ public slots:
         }
     }
 
+    void waitFor(){m_mySocket->waitForBytesWritten(1000);}
     void writeHolaMundo(){
         m_mySocket->write("Hola Mundo");
     }

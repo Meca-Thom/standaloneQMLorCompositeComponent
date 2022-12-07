@@ -29,7 +29,10 @@ GridLayout{
             Rectangle{height:50;width:50;
                 color: "orange"
                 MouseArea{anchors.fill:parent
-                    onClicked:{leClient.writeHolaMundo()
+                    onClicked:{//leClient.writeHolaMundo()
+                        //leClient.waitFor();
+                        leServ.writeHolaMundoServTest();
+                        //leServ.envia(utilFO.openTheFileAndReturnString(myFileName));
                     }
                 }
             }
@@ -37,7 +40,7 @@ GridLayout{
                 color: "pink"
                 MouseArea{anchors.fill:parent
                     onClicked:{leClient.connect2Serv();
-                        console.log(utilFO.openTheFileAndReturnString(myFileName));
+                        //console.log(utilFO.openTheFileAndReturnString(myFileName));
                     }
                 }
             }
