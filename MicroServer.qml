@@ -15,7 +15,7 @@ GridLayout{
     FileOpener{
         id:utilFO
     }
-
+    property int sizeOfAreas:150
     property string myFileName: "C:\\Users\\Thomas\\Documents\\GIT\\standaloneQMLorCompositeComponents\\TEST.txt"
     anchors.fill:parent
     Layout.fillHeight: true
@@ -26,28 +26,46 @@ GridLayout{
         color: "green"
         RowLayout{
             anchors.centerIn: parent
-            Rectangle{height:50;width:50;
+
+            //COMP : DOWNLOAD FILE
+            Rectangle{height:sizeOfAreas;width:sizeOfAreas;
                 color: "orange"
+                Text{
+                    text: "download file"
+                    anchors.centerIn: parent
+                }
+
                 MouseArea{anchors.fill:parent
                     onClicked:{//leClient.writeHolaMundo()
                         //leClient.waitFor();
-                        leServ.writeHolaMundoServTest();
-                        //leServ.envia(utilFO.openTheFileAndReturnString(myFileName));
+                        //leServ.writeHolaMundoServTest();
+                        leServ.envia(utilFO.openTheFileAndReturnString(myFileName));    //openFileIntoByteArray
                     }
                 }
             }
-            Rectangle{height:50;width:50;
+
+            //COMP : CONNECT CLIENT
+            Rectangle{height:sizeOfAreas;width:sizeOfAreas;
                 color: "pink"
+                Text{
+                    text: "connect client"
+                    anchors.centerIn: parent
+                }
                 MouseArea{anchors.fill:parent
                     onClicked:{leClient.connect2Serv();
                         //console.log(utilFO.openTheFileAndReturnString(myFileName));
                     }
                 }
             }
-            Rectangle{height:50;width:50;
+
+            //COMP : OPEN SERVER
+            Rectangle{height:sizeOfAreas;width:sizeOfAreas;
                 property string servorState : "red";
                 color: servorState
-
+                Text{
+                    text: "open server"
+                    anchors.centerIn: parent
+                }
                 MouseArea{anchors.fill:parent
                     onClicked:{
                         if(parent.servorState=="red"){leServ.initConnection();parent.servorState="chartreuse"}

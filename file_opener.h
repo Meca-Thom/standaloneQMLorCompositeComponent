@@ -15,26 +15,36 @@ public:
 public slots:
     void openTheFile(QString filepath){
         QFile file(filepath);
-            if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-                return;
+        if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+            return;
 
-            while (!file.atEnd()) {
-                QByteArray line = file.readLine();
-                qDebug()<<line;//process_line(line);
-            }
+        while (!file.atEnd()) {
+            QByteArray line = file.readLine();
+            qDebug()<<line;//process_line(line);
+        }
     }
 
     QString openTheFileAndReturnString(QString filepath){
         QFile file(filepath);
-            if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-                return "";
-
-            while (!file.atEnd()) {
-                QString line = file.readLine();
-                return line;
-                qDebug()<<line;//process_line(line);
-            }
+        if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
             return "";
+
+        while (!file.atEnd()) {
+            QString line = file.readLine();
+            return line;
+            qDebug()<<line;//process_line(line);
+        }
+        return "";
+    }
+
+    QByteArray openFileIntoByteArray(QString filepath){
+        QFile file(filepath);
+        if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+            return 0x0;
+
+
+        QByteArray allFile = file.readAll();
+        return allFile;
     }
 signals:
 
