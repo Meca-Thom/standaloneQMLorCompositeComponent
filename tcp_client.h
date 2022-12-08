@@ -25,7 +25,13 @@ public slots:
     void writeHolaMundo(){
         m_mySocket->write("Hola Mundo");
     }
+
+    void askForHolaOrMundo(){
+        m_mySocket->write("1");
+        m_mySocket->readAll();
+    }
 signals:
+
 
 private:
     QTcpSocket *m_mySocket;

@@ -36,10 +36,11 @@ GridLayout{
                 }
 
                 MouseArea{anchors.fill:parent
-                    onClicked:{//leClient.writeHolaMundo()
+                    onClicked:{leClient.askForHolaOrMundo();
+                        //leClient.writeHolaMundo()
                         //leClient.waitFor();
                         //leServ.writeHolaMundoServTest();
-                        leServ.envia(utilFO.openFileIntoByteArray(myFileName));    //      openTheFileAndReturnString(myFileName)
+                        //leServ.envia(utilFO.openFileIntoByteArray(myFileName));    //      openTheFileAndReturnString(myFileName)
                     }
                 }
             }

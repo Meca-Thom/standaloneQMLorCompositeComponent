@@ -22,6 +22,7 @@ private:
 
 signals:
 
+    //QIODevice::bytesAvailable() ;
 public slots:
 
     void initConnection();
@@ -32,6 +33,8 @@ public slots:
 
     //Fonction qui prends en entrée un byte array et le mets dans le socket
     void envia(const QByteArray &msj);
+
+
 
 };
 

@@ -7,8 +7,15 @@ TCP_Server::TCP_Server(QObject *parent)
     //You can also connect to functors or C++11 lambdas:
     connect(this, &TCP_Server::newConnection, [&](){
         mSocket=nextPendingConnection();
+        if(mSocket){
+            connect(mSocket, SIGNAL(readyRead()),this, SLOT(writeHolaMundoServTest()));
+        }
     }
     );
+    //connect (object, signal, slot)
+    //ce que j'essaie de dire : quand un byte est à lire j'appelle telle fct
+
+
 }
 
 void TCP_Server::envia(const QByteArray &test)
@@ -47,8 +54,18 @@ void TCP_Server::initConnection()
 }
 
 void TCP_Server::writeHolaMundoServTest(){
+    qDebug()<<"yo";
     //mSocket->flush();
-    mSocket->write("Hola Mundo");
+    QString choice = mSocket->readAll();
+    if(choice=="1"){
+        mSocket->write("Hola");
+    }
+    else if(choice=="2"){
+        mSocket->write("Mundo");
+    }
+    else {
+        mSocket->write("Otras Cosas");
+    }
     //mSocket->flush();
 }
 
