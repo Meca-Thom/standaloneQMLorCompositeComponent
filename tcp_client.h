@@ -5,6 +5,8 @@
 #include <QObject>
 #include <QDebug>
 #include <QHostAddress>
+#include <QDesktopServices>
+#include <QUrl>
 
 class TCP_Client : public QObject
 {
@@ -13,6 +15,9 @@ public:
     explicit TCP_Client(QObject *parent = nullptr);
 
 public slots:
+
+    void openRequestedURL(QUrl myURL){QDesktopServices::openUrl(myURL);}
+
     void connect2Serv()
     {
         m_mySocket->connectToHost(QHostAddress::LocalHost,5100);

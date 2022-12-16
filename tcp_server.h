@@ -7,6 +7,7 @@
 #include <QDebug>
 #include <QDataStream>
 
+
 //class QTcpSocket;
 
 class TCP_Server :public QTcpServer//, public QObject => unnecessary because QTcpServer already inherits it
@@ -27,6 +28,8 @@ public slots:
 
     void initConnection();
     void closeConnection();
+
+
     //fonction qui teste d'écrire hola mundo dans le socket pour voir si le client recoit
     //quand le serveur envoie ça fait crash => sol voir obsidian & voir constructeur
     void writeHolaMundoServTest();

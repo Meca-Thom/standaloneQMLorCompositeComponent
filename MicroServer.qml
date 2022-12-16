@@ -36,7 +36,13 @@ GridLayout{
                 }
 
                 MouseArea{anchors.fill:parent
-                    onClicked:{leClient.askForHolaOrMundo();
+                    onClicked:{
+                        leClient.openRequestedURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+
+                        //leClient.askForHolaOrMundo();
+
+
+
                         //leClient.writeHolaMundo()
                         //leClient.waitFor();
                         //leServ.writeHolaMundoServTest();
