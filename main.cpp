@@ -10,13 +10,21 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    const QUrl url(QStringLiteral("qrc:/main.qml"));
+
+    const QUrl urlMainWindow(QStringLiteral("qrc:/main.qml"));
+
+
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
-                     &app, [url](QObject *obj, const QUrl &objUrl) {
-        if (!obj && url == objUrl)
+                     &app, [urlMainWindow](QObject *obj, const QUrl &objUrl) {
+        if (!obj && urlMainWindow == objUrl)
             QCoreApplication::exit(-1);
     }, Qt::QueuedConnection);
-    engine.load(url);
+
+
+
+
+
+    engine.load(urlMainWindow);
 
     return app.exec();
 }
