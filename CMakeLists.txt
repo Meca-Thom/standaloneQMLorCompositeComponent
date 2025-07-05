@@ -17,12 +17,17 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick)
 set(PROJECT_SOURCES
         main.cpp
         qml.qrc
+        testembbededdriver.h
+        testembbededdriver.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+    find_package(Qt6 REQUIRED COMPONENTS Core)
+
     qt_add_executable(standaloneQMLorCompositeComponents
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        testembbededdriver.h testembbededdriver.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET standaloneQMLorCompositeComponents APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -44,6 +49,7 @@ endif()
 
 target_link_libraries(standaloneQMLorCompositeComponents
   PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
+target_link_libraries(standaloneQMLorCompositeComponents PRIVATE Qt6::Core)
 
 set_target_properties(standaloneQMLorCompositeComponents PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

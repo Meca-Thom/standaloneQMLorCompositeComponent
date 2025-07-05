@@ -3,5 +3,6 @@
         <file>main.qml</file>
         <file>LayoutsTest.qml</file>
         <file>TCP_Server.qml</file>
+        <file>NumericInterface.qml</file>
     </qresource>
 </RCC>
