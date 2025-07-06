@@ -1,4 +1,6 @@
 #include <QGuiApplication>
+
+#include <QQmlContext>
 #include <QQmlApplicationEngine>
 
 
@@ -25,10 +27,13 @@ int main(int argc, char *argv[])
     }, Qt::QueuedConnection);
 
 
-    TestEmbbededDriver c;
-    c.test();
+    TestEmbbededDriver testObj;
+    //c.test();
+    qmlRegisterType<TestEmbbededDriver>("testObj",1,0,"TestEmbbededDriver");
 
+    engine.rootContext()->setContextProperty("testObj", &testObj);
 
+    //LOAD
     engine.load(urlMainWindow);
 
     return app.exec();
