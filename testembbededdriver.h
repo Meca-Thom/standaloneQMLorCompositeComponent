@@ -1,6 +1,9 @@
 #ifndef TESTEMBBEDEDDRIVER_H
 #define TESTEMBBEDEDDRIVER_H
 
+#include <QTimer>
+#include <QDebug>
+
 
 /*
     CODE METHODOLODY : BDD, TDD, the 9 Matrix
@@ -47,18 +50,77 @@
 
 */
 
-struct sPulseGenerator
+class sPulseGenerator: public QObject
 {
+    Q_OBJECT
+public:
     sPulseGenerator() {
-        frequence=0;
+        frequenceDuSignal=0;
+
+
+
+        //QMetaObject::Connection connection = timerGenerator.callOnTimeout(&sPulseGenerator::generatePulseSignal);
+        QObject::connect(&timerGenerator, &QTimer::timeout, this, &sPulseGenerator::generatePulseSignal);
+
+        //timerGenerator.start(1000);
     }
 
-    void generatePulseSignal(double frequenceSignal){
+    ~sPulseGenerator(){
+        timerGenerator.stop();
+    }
+
+    void setPulseSignal(double frequenceSignal){
+        qDebug()<<"SET FREQUENCY :: "<<frequenceSignal<<"Hz";
+        double periodeDuSignal = 1/frequenceSignal;
+
+        timerGenerator.setInterval(periodeDuSignal/*/2*/);//msec
+        timerGenerator.start();
+
+    };
+
+    void stopSignal(){
+        timerGenerator.stop();
+    }
+
+public slots:
+    bool generatePulseSignal(){
+
+        static int SignalValue=0;
+        static bool validValue=false;
+        static int cptValue=0;
+        qDebug()<<"generatePulseSignal   SignalValue   validValue   cptValue"<<SignalValue<<"  "<<validValue<<"  "<<cptValue;
+
+
+        if(validValue==false){
+            cptValue++;
+            if(cptValue==10){
+                validValue=true;
+            }
+            return false;
+        }
+        else{
+            validValue=false;
+            if(SignalValue==0){
+                SignalValue=1;
+
+            }
+            else{
+                SignalValue=0;
+            }
+
+            qDebug()<<SignalValue;
+            return true;
+        }
+
 
     };
 
 
-    double frequence;
+
+public:
+    QTimer timerGenerator;
+
+    double frequenceDuSignal;
 };
 
 
@@ -71,7 +133,14 @@ class TestEmbbededDriver: public QObject
 {
     Q_OBJECT
 public:
-    TestEmbbededDriver();
+    TestEmbbededDriver(){
+        gen_PULSE = new sPulseGenerator;
+    };
+
+
+    ~TestEmbbededDriver(){
+        delete gen_PULSE;
+    }
 
     /*
 
@@ -83,7 +152,7 @@ public:
 
     */
 
-
+    sPulseGenerator * gen_PULSE;
 
 
 
@@ -112,9 +181,23 @@ public:
 
     Q_INVOKABLE void testGeneratorIQSignals(){
 
-        bool Result=false;
+        static bool INITVAL=false;
 
-        qDebug()<<"Hola : "<<Result;
+        if(INITVAL==false){
+            //gen_PULSE->setPulseSignal(0.5);
+            gen_PULSE->setPulseSignal(10);
+            //gen_PULSE->generatePulseSignal();
+            INITVAL=true;
+        }
+        else{
+            gen_PULSE->stopSignal();
+            INITVAL=false;
+        }
+
+
+        gen_PULSE->generatePulseSignal();
+
+        qDebug()<<"Hola : "<<INITVAL;
     }
 };
 
